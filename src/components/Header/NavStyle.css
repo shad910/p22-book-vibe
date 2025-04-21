@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+
+a.active {
+    @apply text-[#23BE0A] font-medium border border-[#23BE0A];
+  }
+  
+  a.active:hover {
+    @apply text-[#23BE0A] ;
+  }
+  
