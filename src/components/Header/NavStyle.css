@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 
-a.active {
+nav a.active {
     @apply text-[#23BE0A] font-medium border border-[#23BE0A];
   }
   

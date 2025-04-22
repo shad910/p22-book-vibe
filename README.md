@@ -1,3 +1,10 @@
+### Book Vibe
+
+"Book Vibe" – A modern and engaging book-selling platform featuring an eye-catching banner and a wide selection of books for every reader's vibe.
+
+# Live LinK: https://p24-book-vibe-shad910.netlify.app/
+--
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

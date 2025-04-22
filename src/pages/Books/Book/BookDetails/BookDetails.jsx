@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
+import { addToDB, addToDBW } from "../../../../utility/Utility";
 
 const BookDetails = () => {
     const { id } = useParams();
@@ -7,9 +8,9 @@ const BookDetails = () => {
     const bookData = useLoaderData();
 
     const singleBookData = bookData.find((book) => book.bookId === ConID);
-    console.log(singleBookData);
 
     const {
+        bookId,
         bookName,
         author,
         image,
@@ -21,6 +22,14 @@ const BookDetails = () => {
         yearOfPublishing,
         rating,
     } = singleBookData;
+
+    const handleMarkAsRead = (id) => {
+        addToDB(id);
+    }
+
+    const handleWishList = (id) => {
+        addToDBW(id);
+    }
 
     return (
         <div className="work-sans flex gap-7">
@@ -64,8 +73,8 @@ const BookDetails = () => {
                     </div>
                 </div>
                 <div className="flex gap-x-4">
-                    <button className="btn border-gray-300 ">Read</button>
-                    <button className="btn text-white bg-[#50B1C9] hover:text-[#50B1C9] hover:bg-white hover:border-[#50B1C9]">Wishlist</button>
+                    <button onClick={() => handleMarkAsRead(bookId)} className="btn border-gray-300 ">Read</button>
+                    <button onClick={() => handleWishList(bookId)} className="btn text-white bg-[#50B1C9] hover:text-[#50B1C9] hover:bg-white hover:border-[#50B1C9]">Wishlist</button>
                 </div>
             </div>
         </div>
