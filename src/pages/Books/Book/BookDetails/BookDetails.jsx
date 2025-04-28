@@ -32,9 +32,9 @@ const BookDetails = () => {
     }
 
     return (
-        <div className="work-sans flex gap-7">
-            <div className="w-[40%] flex justify-center py-10 bg-[#1313130d] rounded-2xl">
-                <img className="w-80 " src={image} alt={bookName} />
+        <div className="work-sans md:flex gap-7">
+            <div className="w-[90%] md:w-[40%] flex justify-center py-10 bg-[#1313130d] rounded-2xl">
+                <img className="md:w-80 w-48" src={image} alt={bookName} />
             </div>
             <div className="w-[60%]">
                 <div className="space-y-2 mb-5">
@@ -47,16 +47,18 @@ const BookDetails = () => {
                 <p className="mt-5 text-[#131313b3]">
                     <span className="text-black font-bold">Review:</span> {review}
                 </p>
-                <div className="my-2.5 space-x-2.5">
-                    <span className="font-bold">Tag</span>{" "}
-                    {tags.map((tag, index) => (
-                        <div
-                            key={index}
-                            className="badge badge-md text-[#23BE0A] bg-[#23be0a0d]"
-                        >
-                            #{tag}
-                        </div>
-                    ))}
+                <div className="my-2.5 space-x-2.5 space-y-2.5 flex">
+                    <span className="font-bold ">Tag</span>{" "}
+                    <div className="flex gap-2.5">
+                        {tags.map((tag, index) => (
+                            <div
+                                key={index}
+                                className="badge badge-md text-[#23BE0A] bg-[#23be0a0d] "
+                            >
+                                #{tag}
+                            </div>
+                        ))}
+                    </div>
                 </div>
                 <div className="py-5 border-t-2 border-gray-200 flex gap-10">
                     <div className="space-y-2.5 text-[#131313b3]">

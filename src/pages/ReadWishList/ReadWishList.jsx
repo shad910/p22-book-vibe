@@ -71,12 +71,12 @@ const ReadWishList = () => {
 
                 <TabPanel>
                     {
-                        readList.map((read, index) => <ReadList key={index} read={read}></ReadList>)
+                        readList.map((read, index) => <ReadList key={index} read={read} setReadList={setReadList}></ReadList>)
                     }
                 </TabPanel>
                 <TabPanel>
                     {
-                        wishlist.map(wish => <Wishlist key={wish.bookID} wish={wish}></Wishlist>)
+                        wishlist.map((wish, index) => <Wishlist key={index} wish={wish} setWishList={setWishList}></Wishlist>)
                     }
                 </TabPanel>
             </Tabs>

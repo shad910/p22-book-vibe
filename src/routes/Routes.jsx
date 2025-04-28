@@ -20,17 +20,17 @@ const router = createBrowserRouter([
       },
       {
         path: "BookDetails/:id",
-        loader: () => fetch('booksData.json'),
+        loader: () => fetch('/booksData.json'),
         Component: BookDetails
       },
       {
         path: "listed-Books",
-        loader: () => fetch('booksData.json'),
+        loader: () => fetch('/booksData.json'),
         Component:ReadWishList
       },
       {
         path:"pages-to-read",
-        loader: () => fetch('booksData.json'),
+        loader: () => fetch('/booksData.json'),
         Component:PageToRead
       },
       { path: "*", Component: Error },
