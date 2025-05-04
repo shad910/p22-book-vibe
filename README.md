@@ -1,8 +1,8 @@
 # Book Vibe
 
-"Book Vibe" – A modern and engaging book-selling platform featuring an eye-catching banner and a wide selection of books for every reader's vibe.
+"Book Vibe" - A modern and engaging book-selling platform featuring an eye-catching banner and a wide selection of books for every reader's vibe.
 
-## Live LinK: https://p24-book-vibe-shad910.netlify.app/
+## Live LinK: https://p22-book-vibe-shad910.netlify.app/
 
 ---
 
