@@ -4,19 +4,34 @@ import { CiCalendar } from "react-icons/ci";
 import { RiPagesLine } from "react-icons/ri";
 import { NavLink } from 'react-router';
 import { getStoredBook } from '../../../utility/Utility';
+import { Bounce, toast } from 'react-toastify';
 
 const Wishlist = ({ wish, setWishList }) => {
     const { bookId, image, bookName, author, tags, category, rating, publisher, yearOfPublishing, totalPages
     } = wish;
 
     const cancelWishList = (key, Id) => {
-
         const storedData = getStoredBook();
         if (storedData && Array.isArray(storedData)) {
             const filtered = storedData.filter(id => id !== Id);
             localStorage.setItem(key, JSON.stringify(filtered));
-
-            setWishList (prev => prev.filter(item => item.id !== Id));
+            setWishList(prev => {
+                const newList = prev.filter(item => item.bookId !== Id);
+                return newList;
+            });
+            toast.error(`🦄 ${bookName} removed from Wishlist.`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        } else {
+            console.log("storedData is invalid or not an array:", storedData);
         }
     };
 
@@ -62,7 +77,7 @@ const Wishlist = ({ wish, setWishList }) => {
                             View Details
                         </div>
                     </NavLink>
-                    <div onClick={()=>cancelWishList('wishList', bookId)} className='btn btn-xs md:btn rounded-4xl text-red-400 bg-red-100'>
+                    <div onClick={() => cancelWishList('wishList', bookId)} className='btn btn-xs md:btn rounded-4xl text-red-400 bg-red-100'>
                         Remove
                     </div>
                 </div>

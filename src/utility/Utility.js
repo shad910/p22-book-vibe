@@ -1,3 +1,5 @@
+import { Bounce, toast } from "react-toastify";
+
 const getStoredBook = () => {
     const getStoredBookSTR = localStorage.getItem("readList");
     if (getStoredBookSTR) {
@@ -11,11 +13,32 @@ const getStoredBook = () => {
 const addToDB = (id) => {
     const StoredBookData = getStoredBook();
     if (StoredBookData.includes(id)) {
-        alert('already marked')
+        toast.warn('This book is already marked', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        });
     } else {
         StoredBookData.push(id);
         const bookSTR = JSON.stringify(StoredBookData);
         localStorage.setItem("readList", bookSTR);
+        toast.success(`🦄 added to your Read Books Section.`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        });
     }
 }
 
@@ -32,11 +55,32 @@ const getStoredBookW = () => {
 const addToDBW = (id) => {
     const StoredBookData = getStoredBookW();
     if (StoredBookData.includes(id)) {
-        alert('already added to your Wishlist')
+        toast.warn('This book is already added to your Wishlist.', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        });
     } else {
         StoredBookData.push(id);
         const bookSTR = JSON.stringify(StoredBookData);
         localStorage.setItem("wishList", bookSTR);
+        toast.success(`🦄 added to your Wishlist.`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        });
     }
 }
 

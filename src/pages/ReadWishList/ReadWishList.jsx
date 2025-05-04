@@ -50,8 +50,7 @@ const ReadWishList = () => {
             setWishList(sortedByRatingWL);
         }
 
-    }
-
+    };
 
     return (
         <div className='work-sans'>

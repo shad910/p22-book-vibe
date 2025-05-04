@@ -4,6 +4,7 @@ import { CiCalendar } from "react-icons/ci";
 import { RiPagesLine } from "react-icons/ri";
 import { NavLink } from 'react-router';
 import { getStoredBook } from '../../../utility/Utility';
+import { Bounce, toast } from 'react-toastify';
 
 const ReadList = ({ read, setReadList }) => {
 
@@ -11,13 +12,27 @@ const ReadList = ({ read, setReadList }) => {
     } = read;
 
     const cancelReadList = (key, Id) => {
-
         const storedData = getStoredBook();
         if (storedData && Array.isArray(storedData)) {
             const filtered = storedData.filter(id => id !== Id);
             localStorage.setItem(key, JSON.stringify(filtered));
-
-            setReadList(prev => prev.filter(item => item.id !== Id));
+            setReadList(prev => {
+                const newList = prev.filter(item => item.bookId !== Id);
+                return newList;
+            });
+            toast.error(`🦄 ${bookName} removed from Read Books.`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        } else {
+            console.log("storedData is invalid or not an array:", storedData);
         }
     };
 
@@ -64,7 +79,7 @@ const ReadList = ({ read, setReadList }) => {
                             View Details
                         </div>
                     </NavLink>
-                    <div onClick={() => cancelReadList('readList', bookId)} className='btn btn-xs md:btn rounded-4xl text-red-400 bg-red-100'>
+                    <div onClick={() => cancelReadList("readList", bookId)} className='btn btn-xs md:btn rounded-4xl text-red-400 bg-red-100'>
                         Remove
                     </div>
                 </div>
